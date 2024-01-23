@@ -59,7 +59,7 @@
         </div>
         <!-- /.card -->
     </section>
-    <!-- /.content -->
+    <!-- /.content -------------------------------------------->
 @endsection
 
 @section('customJS')
