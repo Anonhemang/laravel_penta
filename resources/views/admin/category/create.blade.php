@@ -20,7 +20,7 @@
         <!-- Default box -->
         <div class="container-fluid">
 
-            <form action="" method="POST" id="categoryform" name="categoryform">
+            <form action="" method="post" id="categoryForm" name="categoryForm">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="pb-5 pt-3">
                     <button type="submit" class="btn btn-primary">Create</button>
-                    <a href="brands.html" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <a href="#" class="btn btn-outline-dark ml-3">Cancel</a>
                 </div>
 
             </form>
@@ -63,5 +63,21 @@
 @endsection
 
 @section('customJS')
-    <script></script>
+    <script>
+        $("#categoryForm").submit(function(event){
+            event.preventDefault();
+            var element = $(this);
+            $.ajax({
+                url: '{{ route("categories.store") }}',
+                type: 'post',
+                data: element.serializeArray(),
+                dataType: 'json',
+                success: function (response) {
+
+                }, error: function(jqXHR, exception){
+                    console.log("Something Went Wrong");
+                }
+            })
+        })
+    </script>
 @endsection
